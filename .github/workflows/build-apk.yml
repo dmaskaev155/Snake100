@@ -2,11 +2,11 @@
 name: Build SNAKE 100 APK
 
 on:
+  workflow_dispatch:
   push:
     paths:
-      - 'Snake100_v12.zip'
+      - 'Snake100_HTML_Updated.zip'
       - '.github/workflows/build-apk.yml'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -28,14 +28,14 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK packages
+      - name: Install Android SDK
         run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Extract project
+      - name: Extract SNAKE 100
         run: |
-          test -f Snake100_v12.zip
+          test -f Snake100_HTML_Updated.zip
           mkdir -p source
-          unzip -q Snake100_v12.zip -d source
+          unzip -q Snake100_HTML_Updated.zip -d source
           test -f source/gradlew
           chmod +x source/gradlew
 
@@ -46,7 +46,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: SNAKE-100-v1.2-APK
+          name: SNAKE-100-APK
           path: source/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 14
