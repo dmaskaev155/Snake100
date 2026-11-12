@@ -18,7 +18,7 @@ jobs:
       - name: Extract game project
         run: |
           mkdir extracted
-          unzip -q Snake100_Android_Game_Files.zip -d extracted
+          unzip -q Snake100_Android_Game_Files_v1.1.zip -d extracted
           cp -a extracted/. .
 
       - name: Set up JDK 17
@@ -35,5 +35,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Snake100-APK
+          name: Snake100-APK-v1.1
           path: app/build/outputs/apk/debug/app-debug.apk
