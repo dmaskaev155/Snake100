@@ -4,7 +4,7 @@ name: Build SNAKE 100 APK
 on:
   push:
     paths:
-      - 'Snake100_Android_Game_Files_v1.2.zip'
+      - 'Snake100_v12.zip'
       - '.github/workflows/build-apk.yml'
   workflow_dispatch:
 
@@ -31,11 +31,11 @@ jobs:
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
-      - name: Extract SNAKE 100 project
+      - name: Extract project
         run: |
-          test -f Snake100_Android_Game_Files_v1.2.zip
+          test -f Snake100_v12.zip
           mkdir -p source
-          unzip -q Snake100_Android_Game_Files_v1.2.zip -d source
+          unzip -q Snake100_v12.zip -d source
           test -f source/gradlew
           chmod +x source/gradlew
 
