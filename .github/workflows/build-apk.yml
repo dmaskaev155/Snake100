@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'Snake100_HTML_Updated.zip'
+      - 'Snake100_Autosave_Reset.zip'
       - '.github/workflows/build-apk.yml'
 
 permissions:
@@ -33,9 +33,9 @@ jobs:
 
       - name: Extract SNAKE 100
         run: |
-          test -f Snake100_HTML_Updated.zip
+          test -f Snake100_Autosave_Reset.zip
           mkdir -p source
-          unzip -q Snake100_HTML_Updated.zip -d source
+          unzip -q Snake100_Autosave_Reset.zip -d source
           test -f source/gradlew
           chmod +x source/gradlew
 
